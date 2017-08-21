@@ -1,0 +1,3 @@
+﻿{"TelemetryCreationTime":"2017-08-17T08:24:42.8529467+02:00","DeviceId":"DeviceRunningWin10","Temperature":22.653350165418047,"Humidity":49.297316935517507}
+{"TelemetryCreationTime":"2017-08-17T08:24:44.45698+02:00","DeviceId":"DeviceRunningWin10","Temperature":29.521865402125691,"Humidity":46.162149806582441}
+{"TelemetryCreationTime":"2017-08-17T08:24:45.4736747+02:00","DeviceId":"DeviceRunningWin10","Temperature":28.334168814278286,"Humidity":46.043314796892609}

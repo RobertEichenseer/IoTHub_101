@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="Device.View.TelemetryIngest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Device.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+    Loaded="Page_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="grdMain">
+
+        <Grid.RowDefinitions>
+            <!--Header-->
+            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="2" />
+            <!--Main Content-->
+            <RowDefinition Height="*" />
+            <!--Footer-->
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions/>
+
+        <!--Header-->
+        <TextBlock  Grid.Row="0" Grid.Column="0" Text="IoT Hub 101 - Device" FontSize="30" Foreground="Black" Margin="15,5,5,5"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Telemetry Ingest " FontSize="20" Foreground="Black" Margin="15,5,5,5"/>
+        <Border Grid.Row="2" Grid.Column="0" BorderBrush="Gray" BorderThickness="2" Margin="5,0,5,0" />
+
+        <Grid Grid.Row="3" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="250"/>
+                <ColumnDefinition  Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Row="0" Grid.Column="0" Text="Device Connection String" Margin="5" FontSize="18" VerticalAlignment="Center" IsEnabled="False" Background="White" BorderBrush="White"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" FontSize="18" Text="{Binding Path=IoTHubConnectionString, Mode=TwoWay}"/>
+
+            <TextBox Grid.Row="1" Grid.Column="0" Text="Device Id" Margin="5" FontSize="18" VerticalAlignment="Center" IsEnabled="False" Background="White" BorderBrush="White"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" FontSize="18" Text="{Binding Path=DeviceId, Mode=TwoWay}" IsEnabled="false"/>
+
+            <Button Grid.Row="3" Grid.Column="0" Content="{Binding StartStopSendingTelemetryButtonCaption}" Margin="5" Click="StartStopSendingTelemetrySDK_Click"/>
+            <CheckBox Grid.Row="4" Grid.Column="0" Content="Use Http instead of SDK" IsChecked="{Binding IsHttpIngest, Mode=TwoWay}" Margin="5"/>
+
+            <StackPanel Grid.Row="5" Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Select File.." Margin="5,20,5,5" Click="SelectUploadFile_Click" />
+                    <CheckBox Content="Listen for Ack" Margin="5" IsChecked="{Binding IsListeningForFileUploadAck, Mode=TwoWay}"/>
+                </StackPanel>
+                <TextBox IsEnabled="False" Text="{Binding BatchUploadFileName}" Margin="5"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Upload File" Margin="5" IsEnabled="{Binding IsBatchUploadFileSelected}" Click="UploadFile_Click"/>
+                    <Button Content="Single Line" Margin="5" IsEnabled="{Binding IsBatchUploadFileSelected}" Click="IngestFileLineByLine_Click"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.RowSpan="3" Margin="5" IsEnabled="false" Text="{Binding TelemetryStatus}" TextWrapping="Wrap"/>
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Clear" Margin="5" Click="ClearTelemetryStatus_Click"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Page>
+
